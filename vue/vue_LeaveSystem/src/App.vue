@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
+<div>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <RouterLink to="/PersonInformation"> 个人中心 </RouterLink>
+    <RouterLink to="/Main"> 请假展示 </RouterLink>
+    <RouterLink to="/Login">登录</RouterLink>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div>
+    <RouterView></RouterView>
+  </div>
+</div>
 </template>
 
 <style scoped>
