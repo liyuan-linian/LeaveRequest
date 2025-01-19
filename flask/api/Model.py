@@ -13,7 +13,7 @@ class User(db_user.Model):
     username = db_user.Column(db_user.String(64), nullable=False, index=True)
     password_Hash = db_user.Column(db_user.String(64), nullable=False)
     role = db_user.Column(db_user.String(64), default="user")  # admin  leader user
-# token生成需要字符串 因此讲权限换成string类型
+    # token生成需要字符串 因此讲权限换成string类型
     department = db_user.Column(db_user.String(64), nullable=False)
     phone_num_long = db_user.Column(db_user.String(64), nullable=False)
     phone_num_short = db_user.Column(db_user.String(32), nullable=False)
@@ -62,6 +62,7 @@ class Leave_request(db_user.Model):
     leave_reason = db_user.Column(db_user.String(200), nullable=False)
     leave_location = db_user.Column(db_user.String(200), nullable=False)
     leave_alternative = db_user.Column(db_user.String(200), nullable=False)
+    status = db_user.Column(db_user.String(200), nullable=False)
 
     def __init__(self, user_id, apply_time, leave_end_time, leave_location, leave_alternative):
         self.user_id = user_id
