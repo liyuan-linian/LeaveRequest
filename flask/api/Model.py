@@ -63,6 +63,7 @@ class Leave_request(db_user.Model):
     leave_location = db_user.Column(db_user.String(200), nullable=False)
     leave_alternative = db_user.Column(db_user.String(200), nullable=False)
     status = db_user.Column(db_user.String(200), nullable=False)
+    message = db_user.Column(db_user.String(200), nullable=False,default='无')
 
     def __init__(self, user_id, apply_time, leave_end_time, leave_location, leave_alternative):
         self.user_id = user_id
@@ -70,3 +71,14 @@ class Leave_request(db_user.Model):
         self.leave_end_time = leave_end_time
         self.leave_location = leave_location
         self.leave_alternative = leave_alternative
+        self.status = "submitted"
+
+    def approve(self,message):
+        self.status = "approved"
+        if self.message :
+            self.message = message
+
+    def reject(self,message):
+        self.status = "rejected"
+        if self.message :
+            self.message = message
