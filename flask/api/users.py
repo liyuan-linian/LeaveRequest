@@ -135,7 +135,7 @@ def get_user_id():
 
 
 # 管理员修改其他人的信息和密码
-@api_blueprint.route('/api/update_userinfo/<int:user_id>', methods=['PUT'])
+@api_blueprint.route('/update_userinfo/<int:user_id>', methods=['PUT'])
 @role_required(role="admin")
 def update_userinfo0(user_id):
     user = User.query.get(user_id)
@@ -211,6 +211,15 @@ def update_password0(user_id):
         "new_password": new_password
     })
 
+# 获取当前登录用户的信息
+@api_blueprint.route('/get_userinfo', methods=['GET'])
+@role_required(role="user")
+def get_userinfo():
+    user = g.user
+    return jsonify({
+        "username": user.username,
+        "id": user.id,
+    })
 
 # 测试页面
 @api_blueprint.route('/test/admin', methods=['GET'])
